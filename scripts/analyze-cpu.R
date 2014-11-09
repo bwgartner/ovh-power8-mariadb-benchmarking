@@ -4,7 +4,7 @@
 library(ggplot2)
 
 # for combined data sets
-combined_analysis <- function(vm="ra.p8.s") {
+cpu_analysis <- function(vm="ra.p8.s") {
 
   myDirs <- list.files("./", pattern="ra.p8.s$")
   tables <- lapply(paste(myDirs, "/sysbench.cpu.csv", sep="/"), read.csv, header = TRUE)
