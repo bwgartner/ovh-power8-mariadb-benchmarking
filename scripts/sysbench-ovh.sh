@@ -1,6 +1,6 @@
 #! /bin/sh
 
-[ -r ./mariadbrc ] && source ./mariadbrc
+[ -r ./.mariadbrc ] && source ./.mariadbrc
 
 PrefixLog="/tmp/sysbench.ovh"
 

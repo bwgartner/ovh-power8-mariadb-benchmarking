@@ -1,6 +1,6 @@
 #! /bin/sh
 
-[ -r ./mariadbrc ] && source ./mariadbrc
+[ -r ./.mariadbrc ] && source ./.mariadbrc
 
 PrefixLog="/tmp/sysbench05.oltp"
 sudo /usr/sbin/ppc64_cpu --smt=8
