@@ -3,27 +3,26 @@ ovh-power8-mariadb-benchmarking
 
 # Background
 
-This project documents how a comparitive benchmarking study was done to assess MariDB performance with Linux operating systems on Power8 architectures in a public cloud setting. Specifically the following combinations were considered:
+This project documents how a comparitive benchmarking study was done to assess MariaDB performance with Linux operating systems on Power8 architectures in a public cloud setting. Specifically the following combinations were considered:
 
 | Attribute | Value |
 | :--------- |:----- |
 | Cloud Service Provider | [OVH Runabove](https://www.runabove.com/index.xml) |
 | System Architecture | [IBM Power8](http://www-03.ibm.com/systems/power/software/linux/) with PowerKVM 2.1.0 |
 | VM Flavor(s) | ra.p8.s ( 8VCPU, 4GB RAM, 10GB Disk ) |
-|              | ra.p8.2xl ( 176VCPU, 480GB RAM, 480GB Disk ) |
-| Operating System(s) | [Fedora](http://fedoraproject.org/) 19 (BigEndian) |
-|                     | [SUSE Linux Enterprise Server](https://www.suse.com/products/server/) 12 (LittleEndian) |
-|                     | [Ubuntu](http://www.ubuntu.com/server) 14.04 (LittleEndian) |
+| Operating System(s) | [Fedora](http://fedoraproject.org/) 19 *(BigEndian)* |
+|                     | [SUSE Linux Enterprise Server](https://www.suse.com/products/server/) 12 *(LittleEndian)* |
+|                     | [Ubuntu](http://www.ubuntu.com/server) 14.04 *(LittleEndian)* |
 | Database | [MariaDB](https://mariadb.org/) |
-| Benchmark Tool(s) | [SysBench](https://launchpad.net/sysbench) |
+| Benchmark Tool | [SysBench](https://launchpad.net/sysbench) |
 
 The goal is to compare performance across the following variables/settings:
 
-* Simultaneous Multi-Threading : On(8), 4, 2, 1 Off
+* Power8 Simultaneous Multi-Threading : On(8), 4, 2, 1 Off
 * SysBench parallel number of threads : 1 2 4 8 16 32 64 128
 * Notes:
-	* where possible, utilize in-distro components, updated to the latest provided
-	* perform no patching nor tuning of database or benchmarking components
+	* where possible, utilize in-distro components, updated to the latest packages provided
+	* perform no patching nor configuration/tuning of database or benchmarking components
 
 # Process
 
@@ -66,11 +65,9 @@ The process for setup, configuration, data collection and analysis was as follow
 
 * Analysis (or roll your own based upon the CSV or raw data files)
 	* use the respective [R](http://www.r-project.org/) [scripts](./scripts) to read the CSV [data](./data) files, and generate graphs of the [results](./results)
-		* [analyze-cpu.R](./scripts/analyze-cpu.R)
+		* [analyze-cpu.R](./scripts/analyze-cpu.R) - lower = better
 			* ![CPU Benchmark](./results/s-cpu.png)
-		* [analyze-ovh.R](./scripts/analyze-ovh.R)
+		* [analyze-ovh.R](./scripts/analyze-ovh.R) - higher = better
 			* ![MariaDB Benchmark](./results/s-ovh.png)
-		* [analyze05-oltp.R](./scripts/analyze05-oltp.R)
+		* [analyze05-oltp.R](./scripts/analyze05-oltp.R) - higher = better
 			* ![OLTP Benchmark](./results/s-oltp.png)
-
-# Conclusions

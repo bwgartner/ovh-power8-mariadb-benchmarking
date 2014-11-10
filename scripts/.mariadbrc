@@ -1,2 +1,2 @@
-USER=
-PASSWORD=
+export myUser=root
+export myPassword=suse4ohv
