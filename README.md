@@ -34,6 +34,7 @@ The process for setup, configuration, data collection and analysis was as follow
 	* launch each instance combination (operating system + VM flavor)
 	* login to each instance, then
 		* install mariadb packages from distribution
+		* install any needed mysql library packages from distribution
 		* install sysbench packages from distribution (or find equivalent version and compile from source, as needed), yielding the resulting combinations:
 
 | Operating System | MariaDB version | SysBench version(s)|
@@ -66,7 +67,8 @@ The process for setup, configuration, data collection and analysis was as follow
 * Analysis (or roll your own based upon the CSV or raw data files)
 	* use the respective [R](http://www.r-project.org/) [scripts](./scripts) to read the CSV [data](./data) files, and generate graphs of the [results](./results)
 		* [analyze-cpu.R](./scripts/analyze-cpu.R) - lower = better
-			* ![CPU Benchmark](./results/s-cpu.png)
+			* ![CPU Benchmark (ra.p8.s)](./results/s-cpu.png)
+			* ![CPU Benchmark (ra.p8.2xl)](./results/2xl-cpu.png)
 		* [analyze-ovh.R](./scripts/analyze-ovh.R) - higher = better
 			* ![MariaDB Benchmark](./results/s-ovh.png)
 		* [analyze05-oltp.R](./scripts/analyze05-oltp.R) - higher = better

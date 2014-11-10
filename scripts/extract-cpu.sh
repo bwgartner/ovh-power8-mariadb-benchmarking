@@ -26,7 +26,7 @@ for mf in ${Prefix}*
     SMT=${SMT##p}
     [ "$SMT" = "on" ] && SMT=8
     [ "$SMT" = "off" ] && SMT=0
-    Sample=$(echo $mf | cut -f5 -d'.')
+    Sample=$(echo $mf | cut -f4 -d'.')
     Time=$(grep "execution:" $mf 2>/dev/null | awk '{print $NF}')
     Min=$(grep "min:" $mf 2>/dev/null | awk '{print $NF}' )
     Min=${Min%%ms}

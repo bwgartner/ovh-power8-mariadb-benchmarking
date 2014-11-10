@@ -15,7 +15,7 @@ for smt in on off
           /usr/bin/sysbench \
 		--test=cpu \
 		--cpu-max-prime=20000 \
-		run >> ${PrefixLog}.p${smt}.$num
+		run > ${PrefixLog}.p${smt}.$num
         done
         echo
   done
