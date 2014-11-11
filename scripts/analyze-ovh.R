@@ -6,7 +6,9 @@ library(ggplot2)
 # for combined data sets
 ovh_analysis <- function(vm="ra.p8.s") {
 
-  myDirs <- list.files("./", pattern="ra.p8.s$")
+  vmregexp<-c(paste0(vm,"$"))
+
+  myDirs <- list.files("./", pattern=vmregexp)
   tables <- lapply(paste(myDirs, "/sysbench.ovh.csv", sep="/"), read.csv, header = TRUE)
   ovhDF <- do.call(rbind,tables)
 

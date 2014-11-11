@@ -6,7 +6,9 @@ library(ggplot2)
 # for combined data sets
 oltp_analysis <- function(vm="ra.p8.s") {
 
-  myDirs <- list.files("./", pattern="ra.p8.s$")
+  vmregexp<-c(paste0(vm,"$"))
+
+  myDirs <- list.files("./", pattern=vmregexp)
   tables <- lapply(paste(myDirs, "/sysbench05.oltp.csv", sep="/"), read.csv, header = TRUE)
   oltpDF <- do.call(rbind,tables)
 
