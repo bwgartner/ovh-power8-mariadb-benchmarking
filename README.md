@@ -50,26 +50,26 @@ The process for setup, configuration, data collection and analysis was as follow
 
 * Data Collection
 	* use [scripts](./scripts) to standardize testings, and produce output to known file names
-		* perform a simple CPU benchmark, see [sysbench-cpu.sh](./scripts/sysbench-cpu.sh)
-		* prepare a target database, see [sysbench-prepare.sh](./scripts/sysbench-prepare.sh)
-		* perform an initial database benchmark, see [sysbench-ovh.sh](./scripts/sysbench-ovh.sh)
-		* perform a matrix of mixed used database benchmark, see [sysbench05-oltp.sh](./scripts/sysbench05-oltp.sh), includes another database preparation
+		1. perform a simple CPU benchmark, see [sysbench-cpu.sh](./scripts/sysbench-cpu.sh)
+		2. prepare a target database, see [sysbench-prepare.sh](./scripts/sysbench-prepare.sh), then perform an initial database benchmark, see [sysbench-ovh.sh](./scripts/sysbench-ovh.sh)
+		3. perform a matrix of mixed used database benchmark, see [sysbench05-oltp.sh](./scripts/sysbench05-oltp.sh), includes another database preparation
 
 * Data Value Extraction
 	* collect the resulting run-time files from the VMs to another host for processing (samples in [data](./data))
 		* Note the structure of the data files, including directory names, since the following extraction and analysis scripts derive values from those descriptive names
-	* in each of these OperatingSystem-VMFlavor directories use the respective shell [scripts](./scripts) to read the collected data and summarize desired results into simple CSV files 
-		* [extract-cpu.sh](./scripts/extract-cpu.sh)
-		* [extract-ovh.sh](./scripts/extract-ovh.sh)
-		* [extract05-oltp.sh](./scripts/extract05-oltp.sh)
-		* samples of these CSV output files can be found in the [data](./data) file bundles
+	* in each of these OperatingSystem-VMFlavor directories use the respective shell [scripts](./scripts) to read the collected data and summarize desired results into simple CSV files. Note - samples of these CSV output files can be found in the [data](./data) file bundles
+		1. [extract-cpu.sh](./scripts/extract-cpu.sh)
+		2. [extract-ovh.sh](./scripts/extract-ovh.sh)
+		3. [extract05-oltp.sh](./scripts/extract05-oltp.sh)
 
 * Analysis (or roll your own based upon the CSV or raw data files)
 	* use the respective [R](http://www.r-project.org/) [scripts](./scripts) to read the CSV [data](./data) files, and generate graphs of the [results](./results)
-		* [analyze-cpu.R](./scripts/analyze-cpu.R) - lower = better
+		1. [analyze-cpu.R](./scripts/analyze-cpu.R) - lower = better
 			* ![CPU Benchmark (ra.p8.s)](./results/s-cpu.png)
 			* ![CPU Benchmark (ra.p8.2xl)](./results/2xl-cpu.png)
-		* [analyze-ovh.R](./scripts/analyze-ovh.R) - higher = better
-			* ![MariaDB Benchmark](./results/s-ovh.png)
-		* [analyze05-oltp.R](./scripts/analyze05-oltp.R) - higher = better
-			* ![OLTP Benchmark](./results/s-oltp.png)
+		2. [analyze-ovh.R](./scripts/analyze-ovh.R) - higher = better
+			* ![MariaDB Benchmark (ra.p8.s)](./results/s-ovh.png)
+			* ![MariaDB Benchmark (ra.p8.2xl)](./results/2xl-ovh.png)
+		3. [analyze05-oltp.R](./scripts/analyze05-oltp.R) - higher = better
+			* ![OLTP Benchmark (ra.p8.s)](./results/s-oltp.png)
+			* ![OLTP Benchmark (ra.p8.2xl)](./results/2xl-oltp.png)
