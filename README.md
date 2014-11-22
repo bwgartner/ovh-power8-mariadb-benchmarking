@@ -10,6 +10,7 @@ This project documents how a comparitive benchmarking study was done to assess M
 | Cloud Service Provider | [OVH Runabove](https://www.runabove.com/index.xml) |
 | System Architecture | [IBM Power8](http://www-03.ibm.com/systems/power/software/linux/) with PowerKVM 2.1.0 |
 | VM Flavor(s) | ra.p8.s ( 8VCPU, 4GB RAM, 10GB Disk ) |
+|              | ra.p8.2xl ( 176VCPU, 48GB RAM, 480GB Disk ) |
 | Operating System(s) | [Fedora](http://fedoraproject.org/) 19 *(BigEndian)* |
 |                     | [SUSE Linux Enterprise Server](https://www.suse.com/products/server/) 12 *(LittleEndian)* |
 |                     | [Ubuntu](http://www.ubuntu.com/server) 14.04 *(LittleEndian)* |
@@ -33,15 +34,15 @@ The process for setup, configuration, data collection and analysis was as follow
 	* upload any operating systems images not already available
 	* launch each instance combination (operating system + VM flavor)
 	* login to each instance, then
-		* install mariadb packages from distribution
+		* install mariadb packages from distribution (or for larger VM flavor, due to required patches, from upstream source and compile)
 		* install any needed mysql library packages from distribution
 		* install sysbench packages from distribution (or find equivalent version and compile from source, as needed), yielding the resulting combinations:
 
 | Operating System | MariaDB version | SysBench version(s)|
 | ---------------- | --------------- | ------------------ |
-| Fedora 19 | 5.5.38 | 0.4.12, 0.5-128 |
-| SUSE Linux Enterprise Server 12 | 10.0.1 | 0.4.12.5, 0.5-128 |
-| Ubuntu 14.04 | 5.5.39 | 0.4.12, 0.5-128 |
+| Fedora 19 | 5.5.38(s),10.0.14(2xl) | 0.4.12, 0.5-128 |
+| SUSE Linux Enterprise Server 12 | 10.0.1(s),10.0.14(2xl) | 0.4.12.5, 0.5-128 |
+| Ubuntu 14.04 | 5.5.39(s),10.0.14(2xl) | 0.4.12, 0.5-128 |
 
 * Configuration
 	* secure MariaDB installation with known username and password
