@@ -19,8 +19,8 @@ for connect in \
 	--test=/usr/local/share/sysbench/tests/db/oltp.lua \
         --oltp-table-size=1000000 \
 	--mysql-db=test \
-	--mysql-user=root \
-	--mysql-password=suse4ohv \
+	--mysql-user=${myUser} \
+	--mysql-password=${myPassword} \
 	prepare
 
 for smt in on 4 2 1 off
